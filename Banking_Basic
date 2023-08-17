@@ -1,0 +1,78 @@
+#include  <iostream>
+using namespace std;
+
+class userData 
+{
+    string name;
+    double accNO;
+    int withdrawlAmt;
+    int Balance;
+    int bin=0;
+    
+    public:
+    void inputData();
+    void deposit();
+    void withdraw();
+    void balance_display();
+};
+
+void userData::inputData ()
+{
+    cout<<"Enter User Data"<<endl;
+    cout<<"name :"<<endl;
+    cin>>name;
+    cout<<"accNO :"<<endl;
+    cin>>accNO;
+
+    cout<<"Enter balance :"<<endl;
+    cin>>Balance;
+ 
+}
+
+void userData::deposit(){
+    cout<<"Enter Amount to deposit"<<endl;
+    cin>>bin;
+    Balance=Balance+bin;
+    cout<<"Your Current Balance is :" << Balance<<endl;
+    
+}
+void userData::withdraw(){
+  cout<<"Enter amount to withdraw :"<<endl;
+  cin>>withdrawlAmt;
+  Balance = Balance-withdrawlAmt;
+  cout<<"Your Current Balance is :" << Balance<<endl;
+  
+}
+void userData::balance_display(){
+    cout<<"User Name : "<<name<<endl;
+    cout<<"Your Current Balance is :" << Balance<<endl;
+}
+
+
+int main(){
+ userData s1;
+  int x;
+ 
+ cout<<"Hello Welcome to the banking service"<<endl;
+ cout<<"Kindly Enter Your Data"<<endl;
+ s1.inputData();
+ 
+ cout<<"Data is Posted successfully"<<endl<< "Enter 1 to withdraw amt"<<endl<<"Enter 2 to deposit amt"<<endl<<"Enter 3 to display balance"<<endl;
+
+  cin>>x;
+ 
+ switch(x) {
+     case 1 : s1.withdraw();
+                break;
+     case 2: s1.deposit();
+                break;
+                
+    case 3: s1.balance_display();
+                break;
+                
+    default : cout<<"Invaild input thank you for banking with us"<<endl;
+ } 
+ 
+ 
+ 
+}
