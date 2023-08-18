@@ -8,12 +8,16 @@ class userData
     int withdrawlAmt;
     int Balance;
     int bin=0;
+    float rewards=0;
+    int junk=0;
+    int i;
     
     public:
     void inputData();
     void deposit();
     void withdraw();
     void balance_display();
+    void netBanking();
 };
 
 void userData::inputData ()
@@ -48,6 +52,40 @@ void userData::balance_display(){
     cout<<"Your Current Balance is :" << Balance<<endl;
 }
 
+void userData::netBanking(){
+    cout<<"Enter Amount to Pay"<<endl;
+    cin>>junk;
+    if(Balance<junk){
+        cout<<"Not Sufficient Balance"<<endl;
+    }
+    else{
+    
+     if(junk >=0 & junk<= 10000 )
+     {
+         i = 5;
+     }
+     else if (junk >=10000 & junk<= 50000 ){
+        i = 6;
+     }
+     else if (junk >=50000 & junk<= 100000 )
+     {
+        i = 7;
+     }
+     rewards = rewards + junk * i/100;
+     cout<<"Transaction Success Amount :" <<junk<<endl;
+     if(junk>100000){
+        cout<<"Better Luck Next Time"<<endl;
+     }
+     else
+     {
+        cout<<"Congrats You Earned Rewards of worth :"<<rewards<<endl;
+         cout<<"Note Rewards are only applicable for transaction till 100k"<< endl;
+     }
+    }
+   
+    
+}
+
 
 int main(){
  userData s1;
@@ -57,11 +95,13 @@ int main(){
  cout<<"Kindly Enter Your Data"<<endl;
  s1.inputData();
  
- cout<<"Data is Posted successfully"<<endl<< "Enter 1 to withdraw amt"<<endl<<"Enter 2 to deposit amt"<<endl<<"Enter 3 to display balance"<<endl;
+ while(1){
+  cout<<"Data is Posted successfully"<<endl<< "Enter 1 to withdraw amt"<<endl<<"Enter 2 to deposit amt"<<endl<<"Enter 3 to display balance"<<endl<< "Enter 4 for Online transaction"<<endl<<"Enter 5 to Quit " <<endl;
 
   cin>>x;
  
- switch(x) {
+ 
+    switch(x) {
      case 1 : s1.withdraw();
                 break;
      case 2: s1.deposit();
@@ -70,9 +110,13 @@ int main(){
     case 3: s1.balance_display();
                 break;
                 
+    case 4: s1.netBanking();
+                break;
+    case 5:  
+                
     default : cout<<"Invaild input thank you for banking with us"<<endl;
- } 
- 
- 
+       break;
+  } 
+ }
  
 }
