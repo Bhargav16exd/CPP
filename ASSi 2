@@ -33,6 +33,15 @@ public:
         cout << "Enter your Standard you are studying :" << endl;
         cin >> standard;
     }
+    void displayData(){
+    cout << "Your roll no is: " << rno << endl;
+    cout << "Your name is: " << name << endl;
+    cout << "Your Date of Birth is: " << DOB << endl;
+    cout << "Your division is: " << div << endl;
+    cout << "Your address is: " << address << endl;
+    cout << "Your Phone NO is: " << phno << endl;
+    cout << "You are studying in Standard: " << standard << endl;
+    }
     
 };
 
