@@ -46,7 +46,7 @@ public:
     
 };
 
-int studData::counter = 0;  // Definition of the static counter variable
+int studData::counter;
 
 int main() {
     
