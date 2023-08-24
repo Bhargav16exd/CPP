@@ -15,7 +15,7 @@ private:
 public:
        static void count(){
            counter++;
-           cout<<"object"<<counter<<"created"<<endl;
+           cout<<"object "<<counter<<" created "<<endl;
        }
         void inputData() {
         cout << "Enter your RollNo :" << endl;
@@ -32,6 +32,7 @@ public:
         cin >> phno;
         cout << "Enter your Standard you are studying :" << endl;
         cin >> standard;
+        count();
     }
     void displayData(){
     cout << "Your roll no is: " << rno << endl;
