@@ -9,11 +9,15 @@ private:
     char DOB[10];
     char div;
     char address[20];
-    int phno;        // Changed data type to int
+    int phno;
     char standard;
 
 public:
-    static void inputData() {
+       static void count(){
+           counter++;
+           cout<<"object"<<counter<<"created"<<endl;
+       }
+        void inputData() {
         cout << "Enter your RollNo :" << endl;
         cin >> rno;
         cout << "Enter your name :" << endl;
@@ -29,12 +33,16 @@ public:
         cout << "Enter your Standard you are studying :" << endl;
         cin >> standard;
     }
+    
 };
 
 int studData::counter = 0;  // Definition of the static counter variable
 
 int main() {
-    inputData(); 
+    
+    studData s;
+    s.inputData();
+    s.displayData();
 
     return 0;
 }
