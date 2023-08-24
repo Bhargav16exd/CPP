@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class studData {
+    static int counter;
+private:
+    int rno;
+    char name[20];
+    char DOB[10];
+    char div;
+    char address[20];
+    int phno;        // Changed data type to int
+    char standard;
+
+public:
+    static void inputData() {
+        cout << "Enter your RollNo :" << endl;
+        cin >> rno;
+        cout << "Enter your name :" << endl;
+        cin >> name;
+        cout << "Enter your Date of Birth :" << endl;
+        cin >> DOB;
+        cout << "div :" << endl;
+        cin >> div;
+        cout << "Enter your address :" << endl;
+        cin >> address;
+        cout << "Enter your Phone NO :" << endl;
+        cin >> phno;
+        cout << "Enter your Standard you are studying :" << endl;
+        cin >> standard;
+    }
+};
+
+int studData::counter = 0;  // Definition of the static counter variable
+
+int main() {
+    inputData(); 
+
+    return 0;
+}
