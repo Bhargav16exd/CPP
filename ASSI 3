@@ -1,0 +1,205 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+class vehicle{
+    public:
+    char mileage[10];
+    int price;
+ };
+
+class car:public vehicle{
+    public:
+    int cost;
+    char warranty[10];
+    int seating_capacity;
+    char fuelType[10];
+};
+
+class bike:public vehicle{
+    public:
+    int noOfCylinders;
+    int noOfGears;
+    char coolingType[10];
+    char wheelType[10];
+    int tankSize;
+};
+// Child of Car Classes
+class audi:public car{
+    public:
+    char modelType[10];
+    audi(){
+        cout<<"Enter Audi Data"<<endl;
+         getCarData();
+         displayCarData();
+    }
+    public:
+  void getCarData(){
+       cout << "Mileage: ";
+        cin >> mileage;
+
+        cout << "Price: ";
+        cin >> price;
+
+        cout << "Cost: ";
+        cin >> cost;
+
+        cout << "Warranty: ";
+        cin >> warranty;
+
+        cout << "Seating Capacity: ";
+        cin >> seating_capacity;
+
+        cout << "Fuel Type: ";
+        cin >> fuelType; 
+    }
+    void displayCarData(){
+        cout << "\nCar Details:" << endl;
+        cout << "Mileage: " << mileage << endl;
+        cout << "Price: " << price << endl;
+        cout << "Cost: " << cost << endl;
+        cout << "Warranty: " << warranty << endl;
+        cout << "Seating Capacity: " << seating_capacity << endl;
+        cout << "Fuel Type: " << fuelType << endl;
+    }
+};
+
+class ford:public car{
+    public:
+    char modelType[10];
+    ford(){
+        cout<<"Enter ford Data"<<endl;
+         getCarData();
+    }
+    public:
+    void getCarData(){
+       cout << "Mileage: ";
+        cin >> mileage;
+
+        cout << "Price: ";
+        cin >> price;
+
+        cout << "Cost: ";
+        cin >> cost;
+
+        cout << "Warranty: ";
+        cin >> warranty;
+
+        cout << "Seating Capacity: ";
+        cin >> seating_capacity;
+
+        cout << "Fuel Type: ";
+        cin >> fuelType; 
+    }
+    void displayCarData(){
+        cout << "\nCar Details:" << endl;
+        cout << "Mileage: " << mileage << endl;
+        cout << "Price: " << price << endl;
+        cout << "Cost: " << cost << endl;
+        cout << "Warranty: " << warranty << endl;
+        cout << "Seating Capacity: " << seating_capacity << endl;
+        cout << "Fuel Type: " << fuelType << endl;
+    }
+};
+
+// Child of bike
+
+class TVS:public bike{
+    public:
+    char modelType[10];
+    TVS(){
+        cout<<"Enter TVS Data:"<<endl;
+        getBikeData();
+    }
+    public:
+    void getBikeData(){
+    
+        cout << "Mileage: ";
+        cin >> mileage;
+
+        cout << "Price: ";
+        cin >> price;
+
+        cout << "Number of Cylinders: ";
+        cin >> noOfCylinders;
+
+        cout << "Number of Gears: ";
+        cin >> noOfGears;
+
+        cout << "Cooling Type: ";
+        cin >> coolingType;
+
+        cout << "Wheel Type: ";
+        cin >> wheelType;
+
+        cout << "Model Type: ";
+        cin >> modelType;
+       }
+
+       void displayBikeData(){
+        cout << "Mileage: " << mileage << endl;
+        cout << "Price: " << price << endl;
+        cout << "Number of Cylinders: " << noOfCylinders << endl;
+        cout << "Number of Gears: " << noOfGears << endl;
+        cout << "Cooling Type: " << coolingType << endl;
+        cout << "Wheel Type: " << wheelType << endl;
+        cout << "Model Type: " << modelType << endl;
+       }
+    
+};
+
+class Bajaj:public bike{
+    public:
+    char modelType[10];
+    Bajaj(){
+        cout<<"Enter TVS Data:"<<endl;
+        getBikeData();
+    }
+    public:
+    void getBikeData(){
+    
+        cout << "Mileage: ";
+        cin >> mileage;
+
+        cout << "Price: ";
+        cin >> price;
+
+        cout << "Number of Cylinders: ";
+        cin >> noOfCylinders;
+
+        cout << "Number of Gears: ";
+        cin >> noOfGears;
+
+        cout << "Cooling Type: ";
+        cin >> coolingType;
+
+        cout << "Wheel Type: ";
+        cin >> wheelType;
+
+        cout << "Model Type: ";
+        cin >> modelType;
+       }
+
+       void displayBikeData(){
+        cout << "Mileage: " << mileage << endl;
+        cout << "Price: " << price << endl;
+        cout << "Number of Cylinders: " << noOfCylinders << endl;
+        cout << "Number of Gears: " << noOfGears << endl;
+        cout << "Cooling Type: " << coolingType << endl;
+        cout << "Wheel Type: " << wheelType << endl;
+        cout << "Model Type: " << modelType << endl;
+       }
+};
+
+
+int main() {
+    TVS t;
+    Bajaj b;
+    ford f;
+    audi a;
+    t.displayBikeData();
+    b.displayBikeData();
+    f.displayCarData();
+    a.displayCarData();
+    
+    return 0;
+}
