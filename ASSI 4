@@ -1,0 +1,57 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class complex{
+    public:
+    int real;
+    int img;
+    // constructor called
+    complex(int r=0,int i=0){
+     real=r;
+     img=i;
+    }
+    
+    complex operator+(complex b){
+        complex o;
+        o.real=real+b.real;
+        o.img= img+b.img;
+        return o;
+    }
+    
+    complex operator*(complex b){
+    complex o;
+    o.real = real*b.real-img*b.img;
+    o.img = real*b.img + img*b.real;
+    return o;
+    }
+    
+    
+    public:
+    void display(){
+        cout<<"No is :"<<real<<"+i"<<img<<endl;
+    }
+    
+};
+
+int main() {
+    int x;
+    cout<<"Enter 0 for addtion 1 for multiplication"<<endl;
+    cin>>x;
+    if(x==0){
+      complex a(10,20),b(90,100); 
+       complex c = a+b;
+           c.display();
+    }
+    else if(x==1){
+          complex a(2,3),b(4,5);
+            complex c = a*b;
+                c.display();
+    }
+    else{
+        cout<<"Invalid Opreation"<<endl;
+    }
+   
+    
+    return 0;
+}
