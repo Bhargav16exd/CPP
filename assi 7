@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+template <class dataType>
+
+class myVectorClass{
+    public:
+    dataType Vector[3];
+    public:
+    void createVector(dataType inputArr[]){
+        for(int i=0;i<7;i++){
+            Vector[i]=inputArr[i] -1;
+        }
+    }
+    void display(){
+        for(int i=0;i<7;i++){
+            cout<<Vector[i];
+        }
+    }
+    
+};
+
+int main(){
+  
+    myVectorClass<char> charVector;
+    char charArray[7]={'b','s','v','o','j','u','b'};
+    charVector.createVector(charArray);
+    charVector.display();
+    
+    
+ }
