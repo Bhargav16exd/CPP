@@ -1,0 +1,132 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class Matrix{
+    public:
+    static const int MAX = 3;
+    int mat[MAX][MAX];
+    int rows;
+    int columns;
+    
+    public:
+    void readMatrix(int row, int column){
+        if(row >3 ||  column >3){
+            throw invalid_argument("Row or coloumn execedes size");
+        }
+        this->rows = row;
+        this->columns = column;
+        for(int i =0;i<row; i++){
+            for(int j=0 ; j<column ;j++){
+                cout<<"Enter element "<<i<<" "<<j<<endl;
+                cin>>mat[i][j];
+            }
+        }
+    }
+    void displayMatrix(){
+        cout<<"Matrix :"<<endl;
+         for(int i =0;i < this->rows; i++){
+            
+            for(int j=0 ;j < this->columns;j++){
+                cout<<mat[i][j]<<" ";
+            }
+            cout<<""<<endl;
+        }
+    }
+    
+    Matrix matrixAdd(Matrix matrix2)
+    {
+        Matrix resultMatrix;
+        
+    if(matrix2.rows!= this->rows || matrix2.columns !=this->columns){
+        throw invalid_argument("degree dont match of matrices");
+    }
+    
+      resultMatrix.rows = this->rows;
+       resultMatrix.columns = this->columns;
+
+    
+     for(int i=0;i<3; i++){
+        for(int j=0 ;j<3;j++)
+        {
+            resultMatrix.mat[i][j] = mat[i][j] + matrix2.mat[i][j];
+        }
+     }
+        return resultMatrix;
+    }
+    Matrix matrixSub(Matrix matrix2)
+    {
+        Matrix resultMatrix;
+        
+    if(matrix2.rows!= this->rows || matrix2.columns !=this->columns){
+        throw invalid_argument("degree dont match of matrices");
+    }
+    
+      resultMatrix.rows = this->rows;
+       resultMatrix.columns = this->columns;
+
+    
+     for(int i=0;i<3; i++){
+        for(int j=0 ;j<3;j++)
+        {
+            resultMatrix.mat[i][j] = mat[i][j] - matrix2.mat[i][j];
+        }
+     }
+        return resultMatrix;
+    }
+    Matrix matrixM(Matrix matrix2)
+    {
+        Matrix resultMatrix;
+        
+    if(matrix2.rows!= this->rows || matrix2.columns !=this->columns){
+        throw invalid_argument("degree dont match of matrices");
+    }
+    
+      resultMatrix.rows = this->rows;
+       resultMatrix.columns = this->columns;
+
+    
+     for(int i=0;i<3; i++){
+        for(int j=0 ;j<3;j++)
+        {
+            resultMatrix.mat[i][j] = 0;
+            for(int k=0;k<3;k++){
+            resultMatrix.mat[i][j] += mat[i][k] * matrix2.mat[k][j];
+            }
+        }
+     }
+        return resultMatrix;
+    }
+};
+
+int main() {
+   
+   try{
+       Matrix matrix1;
+       Matrix matrix2;
+       matrix1.readMatrix(3,3);
+       matrix1.displayMatrix();
+       matrix2.readMatrix(3,3);
+       matrix2.displayMatrix();
+       
+      // cout<<"addtion of matrix :"<<endl;
+      // Matrix addResult = matrix1.matrixAdd(matrix2);
+      // addResult.displayMatrix();
+       
+      // cout<<"sub of matrix :"<<endl;
+      // Matrix subResult = matrix1.matrixSub(matrix2);
+      // subResult.displayMatrix();
+       
+       cout<<"Multi of matrix :"<<endl;
+       Matrix mResult = matrix1.matrixM(matrix2);
+       mResult.displayMatrix();
+       
+       
+       
+   }
+   catch(const invalid_argument& e){
+       cout<<e.what()<<endl;
+   }
+
+    return 0;
+}
