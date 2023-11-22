@@ -1,0 +1,134 @@
+#include <iostream>
+#include<fstream>
+#include<string>
+
+using namespace std;
+
+class database{
+public:
+    int empId;
+    string name;
+    int age;
+    string department;
+    string post;
+    int salary;
+
+};
+
+void addData(string filename , database emp){
+
+ ofstream storingFile(filename , ios::binary | ios::app);
+
+ if(!storingFile.is_open()){
+  cout<<"Unable to open file"<<endl;
+ }
+
+ storingFile.write((char*)&emp , sizeof(database));
+ storingFile.close();
+
+}
+
+void displayData(string filename){
+  
+ database emp;
+ ifstream file(filename, ios::binary);
+
+ if(!file.is_open()){
+    cout<<"Unable to open file"<<endl;
+ }
+
+ while(file.read((char*)&emp , sizeof(database))){
+
+        cout << "Employee ID: " << emp.empId << endl;
+        cout << "Name: " << emp.name << endl;
+        cout << "Age: " << emp.age << endl;
+        cout << "Department: " << emp.department << endl;
+        cout << "Post: " << emp.post << endl;
+        cout << "Salary: " << emp.salary << endl;
+        cout << "--------------------------" << endl;
+  
+ }
+  
+   file.close();
+
+}
+
+database searchEmployee(int id , string filename){
+    database emp;
+    ifstream searchFile(filename,ios::binary);
+    int flag =0;
+
+    if(!searchFile.is_open()){
+        cout<<"Unable to open file"<<endl;
+    }
+
+    while(searchFile.read((char*)&emp , sizeof(database))){
+        if(emp.empId == id){
+        cout << "Employee ID: " << emp.empId << endl;
+        cout << "Name: " << emp.name << endl;
+        cout << "Age: " << emp.age << endl;
+        cout << "Department: " << emp.department << endl;
+        cout << "Post: " << emp.post << endl;
+        cout << "Salary: " << emp.salary << endl;
+        cout << "--------------------------" << endl;
+        flag=1;
+        return emp;
+        }
+
+    }
+    if(flag==0){
+     cout<<"Unable to find employee"<<endl;
+    }
+    searchFile.close();
+}
+
+int updateData(int id , string updateFile ,int updatedSalary, string updatePost){
+
+    database emp = searchEmployee(id,updateFile);
+
+    if(emp.empId == id){
+    
+      ofstream file(updateFile,ios::binary);
+
+    
+    emp.salary = updatedSalary;
+    emp.post = updatePost;
+
+    file.write((char *)&emp , sizeof(database));
+    
+    file.close();
+
+    cout<<"data updated"<<endl;
+
+    }
+    else{
+        cout<<"Enter Valid id"<<endl;
+    }
+    
+   
+}
+
+
+int main(){
+
+ string filename = "asi8.bin";   
+
+ database emp1 = {1, "John Doe", 30, "IT", "Sft Engineer", 6000};
+ database emp2 = {2, "Jane Smith", 28, "HR", "HR Specialist", 5000};
+
+ cout<<"Employee data :"<<endl;
+ addData(filename,emp1);
+ addData(filename,emp2);
+
+ displayData(filename);
+
+ // searchEmployee(10,filename);
+ int updatedSalary = 7000;
+ string updatePost = "Manager";
+ updateData(1,filename,updatedSalary,updatePost); 
+ displayData(filename);
+
+
+
+    return 0;
+}
